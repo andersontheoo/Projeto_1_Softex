@@ -1,46 +1,48 @@
 '''Projeto 1 – Sistema de Gerenciamento de Alunos'''
 
 alunos= []
+
 def cadastrar_aluno():
     nome = input("Digite o nome do aluno: ")
     idade = int(input("Digite a idade do aluno: "))
-    nota = float(input("Digite a nota do aluno: "))
+    nota = float(input("Digite a nota do aluno (0 a 10): "))
 
-    alunos = {
+    aluno = {
         "nome": nome,
         "idade": idade,
-        "nota": nota
+        "nota": round(nota, 1)  # garante 1 casa decimal
     }
 
-for i in range(5):
-    print(f"\n -- Cadastro do Aluno {i+1} de 5 ---")
-    cadastrar_aluno()
+    alunos.append(aluno)
+    print(f"Aluno {nome} cadastrado com sucesso!\n")
 
-print("\n Lista de alunos:")
-for i, aluno in enumerate(alunos, 1):
-    print(f"{i}. Nome: {aluno['nome']} | Idade: {aluno['idade']} | Nota: {aluno['nota']}")
 
-# alunos = []
+while True:
+    print("*****===== MENU =====*****")
+    print("1 - Cadastrar aluno")
+    print("2 - Listar alunos cadastrados")
+    print("3 - Buscar aluno pelo nome")
+    print("4 - Listar aprovados e reprovados")
+    print("5 - Sair")
 
-# def cadastrar_aluno():
-#     nome = input("Digite o nome do aluno: ")
-#     idade = int(input("Digite a idade do aluno: "))
-#     nota = float(input("Digite a nota do aluno: "))
+    opcao = input("Escolha uma opção: ")
 
-#     aluno = {
-#         "nome": nome,
-#         "idade": idade,
-#         "nota": nota
-#     }
+    if not opcao.isdigit():  # garante que é um número
+        print("⚠ Digite apenas números de 1 a 5.\n")
+        continue
 
-#     alunos.append(aluno)
-#     print(f"✅ Aluno {nome} cadastrado com sucesso!\n")
+    opcao = int(opcao)
 
-# # Loop para cadastrar até 10 alunos
-# for i in range(10):
-#     print(f"\n--- Cadastro do aluno {i+1} de 10 ---")
-#     cadastrar_aluno()
-
-# print("\n📋 Lista final de alunos:")
-# for i, aluno in enumerate(alunos, 1):
-#     print(f"{i}. Nome: {aluno['nome']} | Idade: {aluno['idade']} | Nota: {aluno['nota']}")
+    if opcao == 1:
+        cadastrar_aluno()
+    elif opcao == 2:
+        print("listar_alunos()")
+    elif opcao == 3:
+        print("buscar_aluno()")
+    elif opcao == 4:
+        print("listar_aprovados_reprovados()")
+    elif opcao == 5:
+        print("Programa finalizado!")
+        break
+    else:
+        print("Opção inválida! Escolha um número entre 1 e 5.\n")
