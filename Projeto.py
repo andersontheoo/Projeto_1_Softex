@@ -34,8 +34,8 @@ def listar_aprovados_reprovados():
    
     print(f"\n media da turma {media:.2f} \n:")
 
-    aprovados = [aluno["nome"] for aluno in alunos if aluno["nota"] <= 7]
-    reprovados = [aluno["nome"] for aluno in alunos if aluno["nota"] >7]
+    aprovados = [aluno["nome"] for aluno in alunos if aluno["nota"] >= 7]
+    reprovados = [aluno["nome"] for aluno in alunos if aluno["nota"] < 7]
 
     print("aprovados")
     if aprovados:
