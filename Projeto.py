@@ -35,6 +35,27 @@ def listar_alunos():
         print(f"{i}. Nome: {aluno['nome']} --- Idade: {aluno['idade']} --- Nota: {aluno['nota']}")
     print()
 
+
+def buscar_aluno():
+    if not alunos:
+        print("Nenhum aluno cadastrado ainda.\n")
+        return
+    
+    nome_busca = input("Digite o nome do aluno que deseja buscar: ").strip().lower()
+    encontrados = []
+
+    for aluno in alunos:
+        # Comparação que busca por parte do nome (melhoria)
+        if nome_busca in aluno["nome"].lower():
+            encontrados.append(aluno)
+
+    if encontrados:
+        print("\n--- Alunos encontrados ---")
+        for i, aluno in enumerate(encontrados, start=1):
+            print(f"{i}. Nome: {aluno['nome']} --- Idade: {aluno['idade']} --- Nota: {aluno['nota']}")
+    else:
+        print(f"Nenhum aluno com o nome '{nome_busca}' foi encontrado.\n")
+
 while True:
     print("*****===== MENU =====*****")
     print("1 - Cadastrar aluno")
@@ -56,7 +77,7 @@ while True:
     elif opcao == 2:
         listar_alunos()
     elif opcao == 3:
-        print("buscar_aluno()")
+        buscar_aluno()
     elif opcao == 4:
         print("listar_aprovados_reprovados()")
     elif opcao == 5:
@@ -64,3 +85,4 @@ while True:
         break
     else:
         print("Opção inválida! Escolha um número entre 1 e 5.\n")
+
